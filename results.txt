@@ -1,0 +1,84 @@
+======================================================================
+DATASET OVERVIEW
+======================================================================
+Samples: 150, Features: 4
+Features: ['sepal length (cm)', 'sepal width (cm)', 'petal length (cm)', 'petal width (cm)']
+Classes : ['setosa', 'versicolor', 'virginica']
+
+First 5 rows:
+   sepal length (cm)  sepal width (cm)  ...  petal width (cm)  species
+0                5.1               3.5  ...               0.2   setosa
+1                4.9               3.0  ...               0.2   setosa
+2                4.7               3.2  ...               0.2   setosa
+3                4.6               3.1  ...               0.2   setosa
+4                5.0               3.6  ...               0.2   setosa
+
+[5 rows x 5 columns]
+
+Summary statistics:
+       sepal length (cm)  sepal width (cm)  petal length (cm)  petal width (cm)
+count             150.00            150.00             150.00            150.00
+mean                5.84              3.06               3.76              1.20
+std                 0.83              0.44               1.77              0.76
+min                 4.30              2.00               1.00              0.10
+25%                 5.10              2.80               1.60              0.30
+50%                 5.80              3.00               4.35              1.30
+75%                 6.40              3.30               5.10              1.80
+max                 7.90              4.40               6.90              2.50
+
+Class distribution:
+species
+setosa        50
+versicolor    50
+virginica     50
+Name: count, dtype: int64
+
+Missing values: 0
+
+======================================================================
+Train size: 120  |  Test size: 30
+
+======================================================================
+MODEL COMPARISON
+======================================================================
+              Model  Test accuracy  CV mean accuracy  CV std
+      Decision Tree         0.9667            0.9733  0.0249
+   SVM (RBF kernel)         0.9667            0.9667  0.0211
+      Random Forest         0.9000            0.9667  0.0211
+Logistic Regression         0.9333            0.9600  0.0389
+K-Nearest Neighbors         0.9333            0.9600  0.0249
+
+======================================================================
+DETAILED EVALUATION: Decision Tree
+======================================================================
+Test accuracy: 0.9667
+
+Classification report:
+              precision    recall  f1-score   support
+
+      setosa      1.000     1.000     1.000        10
+  versicolor      1.000     0.900     0.947        10
+   virginica      0.909     1.000     0.952        10
+
+    accuracy                          0.967        30
+   macro avg      0.970     0.967     0.967        30
+weighted avg      0.970     0.967     0.967        30
+
+Confusion matrix (rows = actual, columns = predicted):
+            setosa  versicolor  virginica
+setosa          10           0          0
+versicolor       0           9          1
+virginica        0           0         10
+
+Random Forest feature importances:
+petal length (cm)    0.454
+petal width (cm)     0.412
+sepal length (cm)    0.116
+sepal width (cm)     0.018
+
+======================================================================
+PREDICTIONS ON NEW FLOWERS (using Decision Tree)
+======================================================================
+  measurements [5.0, 3.4, 1.5, 0.2] -> setosa
+  measurements [6.0, 2.8, 4.5, 1.3] -> versicolor
+  measurements [6.9, 3.1, 5.8, 2.1] -> virginica
